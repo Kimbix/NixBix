@@ -1,0 +1,3 @@
+[submodule "modules/home-manager/development/NeoBix"]
+	path = modules/home-manager/development/NeoBix
+	url = git@github.com:Kimbix/NeoBix.git
