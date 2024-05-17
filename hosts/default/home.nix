@@ -18,6 +18,7 @@
 		../../modules/home-manager/shells/starship.nix
 		../../modules/home-manager/note-taking/obsidian.nix
 		../../modules/home-manager/development/godot.nix
+		../../modules/home-manager/development/Neobix/nvim.nix
 	];
 
 	widgets.ags.enable = true;
@@ -34,6 +35,8 @@
 	};
 
 	nixpkgs.config.allowUnfree = true;
+
+	neovim.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
