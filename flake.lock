@@ -38,6 +38,22 @@
         "type": "github"
       }
     },
+    "neobix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1715912623,
+        "narHash": "sha256-cBmoY4e85A97YptMFwBD7NvMYI5Svm7Jplx2w6FWCrs=",
+        "ref": "refs/heads/main",
+        "rev": "fe9c0204c00d1ab9d0b1dd51d2719f34a24451af",
+        "revCount": 71,
+        "type": "git",
+        "url": "file:./modules/home-manager/development/NeoBix"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:./modules/home-manager/development/NeoBix"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1708475490,
@@ -74,6 +90,7 @@
       "inputs": {
         "ags": "ags",
         "home-manager": "home-manager",
+        "neobix": "neobix",
         "nixpkgs": "nixpkgs_2"
       }
     }

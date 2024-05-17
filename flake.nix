@@ -9,9 +9,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-		ags = {
-			url = "github:Aylur/ags";
-		};
+    neobix = {
+        url = "git+file:./modules/home-manager/development/NeoBix";
+	flake = false;
+    };
+
+    ags = {
+        url = "github:Aylur/ags";
+    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {
