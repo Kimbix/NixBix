@@ -1,0 +1,19 @@
+{
+  "devDependencies": {
+    "@eslint/js": "^9.2.0",
+    "@types/bun": "latest",
+    "eslint": "^9.2.0",
+    "globals": "^15.1.0",
+    "typescript-eslint": "^7.8.0"
+  },
+  "dependencies": {
+    "eslint-config": "^0.3.0",
+    "eslint_d": "^13.1.2"
+  },
+  "name": "ags",
+  "module": "index.ts",
+  "type": "module",
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
