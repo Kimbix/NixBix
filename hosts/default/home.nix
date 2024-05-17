@@ -18,7 +18,7 @@
 		../../modules/home-manager/shells/starship.nix
 		../../modules/home-manager/note-taking/obsidian.nix
 		../../modules/home-manager/development/godot.nix
-		../../modules/home-manager/development/nvim.nix
+		../../modules/home-manager/development/Neobix/nvim.nix
 	];
 
 	widgets.ags.enable = true;
@@ -60,7 +60,6 @@
 		pkgs.nwg-look
 		pkgs.pcmanfm
 		pkgs.obs-studio
-		pkgs.neovim
 		pkgs.nodejs_22
 		pkgs.bun
 		pkgs.vscode-fhs
