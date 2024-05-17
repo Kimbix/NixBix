@@ -1,7 +1,6 @@
 { inputs, pkgs, ... }: {
 	imports = [
 		inputs.ags.homeManagerModules.default
-		inputs.neobix.default
 		../../modules/home-manager/terminals/foot.nix
 		../../modules/home-manager/widgets/ags.nix
 		../../modules/home-manager/window-managers/hyprland.nix
@@ -19,6 +18,7 @@
 		../../modules/home-manager/shells/starship.nix
 		../../modules/home-manager/note-taking/obsidian.nix
 		../../modules/home-manager/development/godot.nix
+		../../modules/home-manager/development/NeoBix/default.nix
 	];
 
 	widgets.ags.enable = true;
@@ -35,8 +35,6 @@
 	};
 
 	nixpkgs.config.allowUnfree = true;
-
-	# neovim.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -71,7 +69,6 @@
 		pkgs.mongodb-compass
 
 		pkgs.postman
-		pkgs.neovim
 		# # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
