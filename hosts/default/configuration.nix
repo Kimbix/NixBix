@@ -76,16 +76,12 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nixpkgs.overlays = [
-    inputs.neobix.overlays.default
-  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 		git
 		rustup
-		nvim-pkg
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

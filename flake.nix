@@ -12,10 +12,6 @@
     ags = {
         url = "github:Aylur/ags";
     };
-
-    neobix = {
-        url = "git+file:./modules/home-manager/development/NeoBix-Nix";
-    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs: {

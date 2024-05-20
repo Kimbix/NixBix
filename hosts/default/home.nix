@@ -19,6 +19,7 @@
 		../../modules/home-manager/note-taking/obsidian.nix
 		../../modules/home-manager/development/godot.nix
 		../../modules/home-manager/development/git.nix
+		../../modules/home-manager/development/nvim.nix
 	];
 
 	widgets.ags.enable = true;
