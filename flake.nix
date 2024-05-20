@@ -14,7 +14,7 @@
     };
 
     neobix = {
-        url = "git+file:./modules/home-manager/development/NeoBix";
+        url = "git+file:./modules/home-manager/development/NeoBix-Nix";
     };
   };
 
