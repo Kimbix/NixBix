@@ -100,17 +100,17 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1715980174,
-        "narHash": "sha256-RIOuNktWx6NSVL+dy35fJ3YZ/X8TOzMYBLtJnAueuhA=",
+        "lastModified": 1716225335,
+        "narHash": "sha256-9z0AR3gntMULKLT/Svu2gU7Q1IrjKj1FtD8vuuLtksE=",
         "ref": "refs/heads/main",
-        "rev": "021ccc44d252a1b609ae06fe26749275d629ae51",
-        "revCount": 75,
+        "rev": "043f601d07def4d079f1b8531d4e03824b6c63b4",
+        "revCount": 1,
         "type": "git",
-        "url": "file:./modules/home-manager/development/NeoBix"
+        "url": "file:./modules/home-manager/development/NeoBix-Nix"
       },
       "original": {
         "type": "git",
-        "url": "file:./modules/home-manager/development/NeoBix"
+        "url": "file:./modules/home-manager/development/NeoBix-Nix"
       }
     },
     "nixpkgs": {
