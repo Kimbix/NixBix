@@ -15,8 +15,8 @@
     ];
   };
 
-  home.file."./config/nvim/" = {
-    source = ./nvim;
+  home.file.".config/nvim/" = {
+    source = ./NeoBix;
     recursive = true;
   };
 }
