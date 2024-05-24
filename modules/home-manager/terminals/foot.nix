@@ -9,7 +9,9 @@
 
 				font = "JetBrainsMono Nerd Font Mono:size=16";
 				dpi-aware = "yes";
+				pad = "16x16 center";
 			};
+
 			mouse = {
 				hide-when-typing = "yes";
 			};

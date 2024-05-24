@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, inputs, ... }: {
 
 	options = {
 		hyprland.enable = lib.mkOption {
@@ -11,6 +11,18 @@
 			type = lib.types.bool;
 			default = false;
 			description = "Enable hyprpaper as a wallpaper utility";
+		};
+
+		hyprland.utilities.hyprpicker.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable hyprpicker color picking utility";
+		};
+
+		hyprland.utilities.hyprcursor.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable cursor setting utility";
 		};
 
 		hyprland.utilities.hyprpaper.autostart = lib.mkOption {
@@ -28,6 +40,8 @@
 
 	config = let
 		hyprpaperEnabled = config.hyprland.utilities.hyprpaper.enable;
+		hyprpickerEnabled = config.hyprland.utilities.hyprpicker.enable;
+		hyprcursorEnabled = config.hyprland.utilities.hyprcursor.enable;
 		hyprpaperAutostart = config.hyprland.utilities.hyprpaper.autostart;
 
 		hyprpaperWallpaperPath = ".config/hypr/wallpaper.png";
@@ -39,7 +53,9 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 		'' else null;
 
 		hyprUtils = 
-			(if hyprpaperEnabled then [ pkgs.hyprpaper ] else []);
+			(if hyprpaperEnabled then [ pkgs.hyprpaper ] else []) ++
+			(if hyprpickerEnabled then [pkgs.hyprpicker ] else []) ++
+			(if hyprcursorEnabled then [ pkgs.hyprcursor ] else []);
 		hyprAutostart = 
 			(if hyprpaperAutostart then [ "hyprpaper" ] else []);
 	in {
@@ -53,9 +69,13 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 
 		wayland.windowManager.hyprland = {
 			enable = config.hyprland.enable;
+			package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 			settings = {
 				env = [
-					''XCURSOR_SIZE, 24''
+					''XCURSOR_THEME,macOS-BigSur-White''
+					''XCURSOR_SIZE,32''
+					''HYPRCURSOR_THEME,macOS-BigSur-White''
+					''HYPRCURSOR_SIZE,32''
 				];
 
 				exec-once = hyprAutostart ++ [
@@ -63,6 +83,12 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 				];
 
 				bind = [
+					## Hyprpicker
+					# Pick Color -> Super + p
+					''SUPER, p, exec, hyprpicker -a  -f hex''
+					# Pick Color -> Super + P
+					''SUPER SHIFT, p, exec, hyprpicker -a  -f rgb''
+
 					## Focus Change
 					# Focus Up -> Super + k
 					''SUPER, k, movefocus, u''
@@ -161,7 +187,6 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 					''SUPER, N, togglespecialworkspace, notes''
 					''SUPER, N, exec, ps aux | grep -i "obsidian" | grep -v "grep" || obsidian''
 					''SUPER SHIFT, N, movetoworkspace, special:notes''
-
 	];
 			};
 			systemd.enable = false;

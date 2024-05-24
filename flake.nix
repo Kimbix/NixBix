@@ -1,26 +1,26 @@
 {
-  description = "Nixos config flake";
+	description = "Nixos config flake";
 
-  inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+	inputs = {
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+		hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+		ags.url = "github:Aylur/ags";
 
-    ags = {
-        url = "github:Aylur/ags";
-    };
-  };
+		home-manager = {
+			url = "github:nix-community/home-manager";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 
-  outputs = { self, nixpkgs, ... }@inputs: {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
-      specialArgs = {inherit inputs;};
-      modules = [
-        ./hosts/default/configuration.nix
-        inputs.home-manager.nixosModules.default
-      ];
-    };
-  };
+	};
+
+	outputs = { self, nixpkgs, ... }@inputs: {
+		nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+			specialArgs = {inherit inputs;};
+			modules = [
+				./hosts/default/configuration.nix
+				inputs.home-manager.nixosModules.default
+			];
+		};
+	};
 }
