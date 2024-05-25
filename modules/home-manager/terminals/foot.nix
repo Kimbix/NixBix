@@ -15,6 +15,9 @@
 			mouse = {
 				hide-when-typing = "yes";
 			};
+			colors = {
+				background = "161616";
+			};
 		};
 	};
 }

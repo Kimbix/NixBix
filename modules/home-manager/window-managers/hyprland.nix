@@ -54,8 +54,9 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 
 		hyprUtils = 
 			(if hyprpaperEnabled then [ pkgs.hyprpaper ] else []) ++
-			(if hyprpickerEnabled then [pkgs.hyprpicker ] else []) ++
-			(if hyprcursorEnabled then [ pkgs.hyprcursor ] else []);
+			(if hyprpickerEnabled then [ pkgs.hyprpicker ] else []) ++
+			(if hyprcursorEnabled then [ pkgs.hyprcursor ] else []) ++
+			[ pkgs.wl-clipboard ];
 		hyprAutostart = 
 			(if hyprpaperAutostart then [ "hyprpaper" ] else []);
 	in {
@@ -76,10 +77,27 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 					''XCURSOR_SIZE,32''
 					''HYPRCURSOR_THEME,macOS-BigSur-White''
 					''HYPRCURSOR_SIZE,32''
+					''_JAVA_AWT_WM_NONREPARENTING,1''
 				];
 
 				exec-once = hyprAutostart ++ [
 					''foot -s''
+				];
+
+				windowrulev2 = [
+# -- Fix odd behaviors in IntelliJ IDEs --
+#! Fix focus issues when dialogs are opened or closed
+''windowdance,,class:^(jetbrains-.*)$,floating:1''
+#!een showing in weird places and prevent annoying focus takeovers
+''center,class:^(jetbrains-.*)$,title:^(splash)$,floating:1''
+''nofocus,class:^(jetbrains-.*)$,title:^(splash)$,floating:1''
+''noborder,class:^(jetbrains-.*)$,title:^(splash)$,floating:1''
+#!find windows
+''center,class:^(jetbrains-.*)$,title:^( )$,floating:1''
+''stayfocused,class:^(jetbrains-.*)$,title:^( )$,floating:1''
+''noborder,class:^(jetbrains-.*)$,title:^( )$,floating:1''
+#! flicker when autocomplete or tooltips appear
+''nofocus,class:^(jetbrains-.*)$,title:^(win.*)$,floating:1''
 				];
 
 				bind = [
@@ -187,6 +205,7 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 					''SUPER, N, togglespecialworkspace, notes''
 					''SUPER, N, exec, ps aux | grep -i "obsidian" | grep -v "grep" || obsidian''
 					''SUPER SHIFT, N, movetoworkspace, special:notes''
+
 	];
 			};
 			systemd.enable = false;

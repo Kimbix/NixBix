@@ -77,6 +77,9 @@
 
 		pkgs.postman
 		pkgs.tlrc
+
+		pkgs.jetbrains.idea-community
+		pkgs.jdk8
 		# # Adds the 'hello' command to your environment. It prints a friendly
 		# # "Hello, world!" when run.
 		# pkgs.hello
