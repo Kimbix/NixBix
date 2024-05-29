@@ -3,6 +3,7 @@
 		ripgrep
 		lua-language-server
 		nil
+		java-language-server
 		nodePackages.typescript-language-server
 		nodePackages.eslint
 	];

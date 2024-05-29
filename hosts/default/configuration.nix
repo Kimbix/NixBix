@@ -21,6 +21,12 @@
 		wayland.enable = true;
 	};
 
+	hardware.pulseaudio.enable = false;
+	services.xserver = {
+		enable = true;
+		desktopManager.gnome.enable = true;
+	};
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -82,6 +88,7 @@
   environment.systemPackages = with pkgs; [
 		git
 		rustup
+		gcc
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
