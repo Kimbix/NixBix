@@ -13,18 +13,6 @@
 			description = "Enable hyprpaper as a wallpaper utility";
 		};
 
-		hyprland.utilities.hyprpicker.enable = lib.mkOption {
-			type = lib.types.bool;
-			default = false;
-			description = "Enable hyprpicker color picking utility";
-		};
-
-		hyprland.utilities.hyprcursor.enable = lib.mkOption {
-			type = lib.types.bool;
-			default = false;
-			description = "Enable cursor setting utility";
-		};
-
 		hyprland.utilities.hyprpaper.autostart = lib.mkOption {
 			type = lib.types.bool;
 			default = true;
@@ -35,6 +23,18 @@
 			type = lib.types.path;
 			default = null;
 			description = "Source for the wallpaper";
+		};
+
+		hyprland.utilities.hyprpicker.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable hyprpicker color picking utility";
+		};
+
+		hyprland.utilities.hyprcursor.enable = lib.mkOption {
+			type = lib.types.bool;
+			default = false;
+			description = "Enable cursor setting utility";
 		};
 	};
 
@@ -55,8 +55,7 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 		hyprUtils = 
 			(if hyprpaperEnabled then [ pkgs.hyprpaper ] else []) ++
 			(if hyprpickerEnabled then [ pkgs.hyprpicker ] else []) ++
-			(if hyprcursorEnabled then [ pkgs.hyprcursor ] else []) ++
-			[ pkgs.wl-clipboard ];
+			(if hyprcursorEnabled then [ pkgs.hyprcursor ] else []);
 		hyprAutostart = 
 			(if hyprpaperAutostart then [ "hyprpaper" ] else []);
 	in {
@@ -195,11 +194,6 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 					''SUPER, M, togglespecialworkspace, music''
 					''SUPER, M, exec, pidof ncmpcpp || foot -a MusicTerminal pkgs.ncmpcpp''
 					''SUPER SHIFT, M, movetoworkspace, special:music''
-					# Discord Workspace -> Super + D
-					# Auto-opens discord
-					''SUPER, D, togglespecialworkspace, discord''
-					''SUPER, D, exec, pidof Discord || discord''
-					''SUPER SHIFT, D, movetoworkspace, special:discord''
 					# NoteTaking Workspace -> Super + N
 					# Auto-opens obsidian
 					''SUPER, N, togglespecialworkspace, notes''

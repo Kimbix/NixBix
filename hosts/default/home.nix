@@ -1,6 +1,7 @@
 { inputs, pkgs, ... }: {
 	imports = [
 		inputs.ags.homeManagerModules.default
+		../../modules/home-manager/gaming/minecraft.nix
 		../../modules/home-manager/terminals/foot.nix
 		../../modules/home-manager/widgets/ags.nix
 		../../modules/home-manager/window-managers/hyprland.nix
@@ -39,6 +40,30 @@
 	xdg.mimeApps.defaultApplications = {
 		"text/plain" = [ "nvim.desktop" ];
 		"image/png" = [ "feh.desktop" ];
+	};
+
+
+	discord = {
+		enable = true;
+		autostart = {
+			enable = true;
+			workspace = {
+				name = "discord";
+				special = true;
+			};
+		};
+		workspace = {
+			name = "discord";
+			special = true;
+			open-if-empty = true;
+			keybind = {
+				key = "d";
+				super = true;
+				shift = false;
+				control = false;
+				alt = false;
+			};
+		};
 	};
 
 	nixpkgs.config.allowUnfree = true;
