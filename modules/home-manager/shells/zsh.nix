@@ -2,6 +2,7 @@
 	programs.fzf.enableZshIntegration = true;
 	programs.eza.enableZshIntegration = true;
 	programs.zoxide.enableZshIntegration = true;
+	programs.oh-my-posh.enableZshIntegration = true;
 
 	programs.zsh = {
 		enable = true;
@@ -23,7 +24,6 @@
 			"zsh-users/zsh-completions"
 			"zsh-users/zsh-autosuggestions"
 			"aloxaf/fzf-tab"
-			"romkatv/powerlevel10k"
 		];
 
 		shellAliases = {
@@ -57,13 +57,9 @@ _fzf_comprun() {
 }
 		'';
 		initExtraFirst = ''
-bindkey -v
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/config.toml)"
 
-# P10K Config, should probably source it from a github
-P10K_CONFIG="${config.home.homeDirectory}/.p10k.zsh"
-if [ -f "$P10K_CONFIG" ]; then
-	source "$P10K_CONFIG"
-fi
+bindkey -v
 
 # FZFGIT package, actually sourcing it from a github
 FZFGIT_DIR="${config.home.homeDirectory}/.fzf-git/"

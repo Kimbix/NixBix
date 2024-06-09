@@ -21,6 +21,23 @@
 		wayland.enable = true;
 	};
 
+
+	hardware.opengl = {
+		enable = true;
+		driSupport = true;
+		driSupport32Bit = true;
+		extraPackages = with pkgs; [
+      amdvlk
+      vaapiVdpau # not sure if this is needed
+      libvdpau-va-gl # also not sure if this is needed
+      rocmPackages.clr.icd
+		];
+		extraPackages32 = with pkgs; [
+			driversi686Linux.amdvlk
+		];
+	};
+	services.xserver.videoDrivers = [ "amdgpu" ]; # this also enables them for wayland lmao
+
 	hardware.pulseaudio.enable = false;
 	services.xserver = {
 		enable = true;

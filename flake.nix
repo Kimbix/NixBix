@@ -4,8 +4,14 @@
 	inputs = {
 		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-		hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 		ags.url = "github:Aylur/ags";
+
+		hyprland = {
+			type = "git";
+			url = "https://github.com/hyprwm/Hyprland";
+			submodules = true;
+			rev = "4cdddcfe466cb21db81af0ac39e51cc15f574da9";
+		};
 
 		home-manager = {
 			url = "github:nix-community/home-manager";

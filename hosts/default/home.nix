@@ -1,4 +1,5 @@
 { inputs, pkgs, ... }: {
+# This is a test comment
 	imports = [
 		inputs.ags.homeManagerModules.default
 		../../modules/home-manager/gaming/minecraft.nix
@@ -20,6 +21,7 @@
 		../../modules/home-manager/image-viewers/feh.nix
 		../../modules/home-manager/sound/easyeffects.nix
 		../../modules/home-manager/shells/zsh.nix
+		../../modules/home-manager/shells/oh-my-posh.nix
 		../../modules/home-manager/shells/starship.nix
 		../../modules/home-manager/note-taking/obsidian.nix
 		../../modules/home-manager/development/godot.nix
@@ -42,27 +44,13 @@
 		"image/png" = [ "feh.desktop" ];
 	};
 
-
-	discord = {
-		enable = true;
-		autostart = {
-			enable = true;
-			workspace = {
-				name = "discord";
-				special = true;
-			};
-		};
-		workspace = {
-			name = "discord";
-			special = true;
-			open-if-empty = true;
-			keybind = {
-				key = "d";
-				super = true;
-				shift = false;
-				control = false;
-				alt = false;
-			};
+	xdg.desktopEntries = {
+		davinci-resolve = {
+			name = "Davinci Resolve";
+			genericName = "Video Editor";
+			exec = "davinci-resolve";
+			terminal = false;
+			categories = [ "Application" "Video" ];
 		};
 	};
 
@@ -90,6 +78,7 @@
 		pkgs.nwg-look
 		pkgs.pcmanfm
 		pkgs.obs-studio
+		pkgs.davinci-resolve
 		pkgs.nodejs_22
 		pkgs.bun
 		pkgs.vscode-fhs

@@ -194,12 +194,6 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 					''SUPER, M, togglespecialworkspace, music''
 					''SUPER, M, exec, pidof ncmpcpp || foot -a MusicTerminal pkgs.ncmpcpp''
 					''SUPER SHIFT, M, movetoworkspace, special:music''
-					# NoteTaking Workspace -> Super + N
-					# Auto-opens obsidian
-					''SUPER, N, togglespecialworkspace, notes''
-					''SUPER, N, exec, ps aux | grep -i "obsidian" | grep -v "grep" || obsidian''
-					''SUPER SHIFT, N, movetoworkspace, special:notes''
-
 	];
 			};
 			systemd.enable = false;
