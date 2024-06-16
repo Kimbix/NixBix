@@ -1,0 +1,75 @@
+version = 2
+final_space = true
+console_title_template = "{{ .Shell }} in {{ .Folder }}"
+
+[[blocks]]
+	type = "prompt"
+	alignment = "left"
+	newline = true
+
+	[[blocks.segments]]
+		type = "os"
+		style = "plain"
+		display_distro_name = true
+		foreground_templates = [
+			"{{ if .Segments.Contains \"Git\" }}#F3AE35{{end}}"
+		]
+		template = "{{ .Icon }} "
+
+	[[blocks.segments]]
+		type = "path"
+		style = "plain"
+		foreground = "blue"
+		foreground_templates = [
+			"{{ if .Segments.Contains \"Git\" }}#F3AE35{{end}}"
+		]
+		background = "transparent"
+		template = "{{ if .Segments.Contains \"Git\"}}/{{ replaceP .Segments.Git.Dir .Path .Segments.Git.RepoName }}{{ else }}{{ .Path }}{{ end }}"
+
+		[blocks.segments.properties]
+			folder_separator_icon = "/"
+			folder_separator_template = ""
+			home_icon = "~"
+			folder_icon = ".."
+			max_depth = 3
+			style = "agnoster_full"
+			mapped_locations_enabled = true
+			[blocks.segments.properties.mapped_locations]
+				"~/Downloads" = "~/"
+				"$gitPath" = "~/GIT"
+	
+	[[blocks.segments]]
+		type = "git"
+		style = "plain"
+		foreground = "#666"
+		background = "transparent"
+		template = " {{ .HEAD }} {{ if or .Working.Changed .Staging.Changed }}[ {{ if .Working.Changed }}W: {{ .Working.String }}{{ end }}{{ if and .Working.Changed .Staging.Changed }} | {{ end }}{{ if .Staging.Changed }}S: {{ .Staging.String }}{{ end }} ]{{ end }} {{ if or (gt .Behind 0) (gt .Ahead 0) }}[ {{ if .Behind }}⇣ {{ .Behind }}{{ end }}{{ if and .Behind .Ahead}} | {{ end }}{{ if .Ahead }}⇡ {{ .Ahead }}{{ end }} ]{{end}}{{ .User.Name }} - {{ .User.Email }}"
+
+		[blocks.segments.properties]
+			branch_icon = ''
+			commit_icon = "@"
+			fetch_status = true
+			fetch_user = true
+
+[[blocks]]
+	type = "prompt"
+	alignment = "left"
+	newline = true
+
+	[[blocks.segments]]
+		type = "text"
+		style = "plain"
+		foreground_templates = [
+			"{{ if gt .Code 0 }}red{{ end }}",
+			"{{ if eq .Code 0 }}green{{ end }}"
+		]
+		background = "transparent"
+		template = "❯"
+[transient_prompt]
+	foreground_templates = [
+		"{{ if gt .Code 0 }}red{{ end }}",
+		"{{ if eq .Code 0 }}green{{ end }}"
+	]
+	background = "transparent"
+	template = "❯"
+	

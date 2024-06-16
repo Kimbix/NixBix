@@ -3,6 +3,7 @@
 	imports = [
 		inputs.ags.homeManagerModules.default
 		../../modules/home-manager/gaming/minecraft.nix
+		../../modules/home-manager/gaming/osu.nix
 		../../modules/home-manager/terminals/foot.nix
 		../../modules/home-manager/widgets/ags.nix
 		../../modules/home-manager/window-managers/hyprland.nix
@@ -21,12 +22,15 @@
 		../../modules/home-manager/image-viewers/feh.nix
 		../../modules/home-manager/sound/easyeffects.nix
 		../../modules/home-manager/shells/zsh.nix
-		../../modules/home-manager/shells/oh-my-posh.nix
+		../../modules/home-manager/shells/oh-my-posh/oh-my-posh.nix
 		../../modules/home-manager/shells/starship.nix
 		../../modules/home-manager/note-taking/obsidian.nix
 		../../modules/home-manager/development/godot.nix
+		../../modules/home-manager/development/dotnet.nix
 		../../modules/home-manager/development/git.nix
 		../../modules/home-manager/development/nvim.nix
+		../../modules/home-manager/development/docker.nix
+		../../modules/home-manager/mail/thunderbird.nix
 	];
 
 	widgets.ags.enable = true;
@@ -72,28 +76,33 @@
 
 	# The home.packages option allows you to install Nix packages into your
 	# environment.
-	home.packages = [
-		pkgs.keepassxc
-		pkgs.tmux
-		pkgs.nwg-look
-		pkgs.pcmanfm
-		pkgs.obs-studio
-		pkgs.davinci-resolve
-		pkgs.nodejs_22
-		pkgs.bun
-		pkgs.vscode-fhs
-		pkgs.lazygit
-		pkgs.sass
-		pkgs.sassc
+	home.packages = with pkgs; [
+		calibre
+		keepassxc
+		tmux
+		nwg-look
+		pcmanfm
+		obs-studio
+		davinci-resolve
+		nodejs_22
+		bun
+		vscode-fhs
+		lazygit
+		sass
+		sassc
 		
-		pkgs.mongosh
-		pkgs.mongodb-compass
+		mongosh
+		mongodb-compass
 
-		pkgs.postman
-		pkgs.tlrc
+		postman
+		tlrc
 
-		pkgs.jetbrains.idea-community
-		pkgs.jdk8
+		jetbrains.idea-community
+		jdk8
+		openssl
+
+		gamemode
+		gamescope
 		# # Adds the 'hello' command to your environment. It prints a friendly
 		# # "Hello, world!" when run.
 		# pkgs.hello

@@ -9,7 +9,7 @@
 
 				font = "JetBrainsMono Nerd Font Mono:size=16";
 				dpi-aware = "yes";
-				pad = "16x16 center";
+				# pad = "16x16 center";
 			};
 
 			mouse = {

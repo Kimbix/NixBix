@@ -3,9 +3,9 @@ let
 	mkRule = import ../window-managers/app-configuration-generator.nix { inherit lib; };
 in 
 	mkRule {
-		appPackage = pkgs.discord;
-		name = "Discord";
-		cmd = "discord";
+		appPackage = pkgs.vesktop;
+		name = "Vesktop";
+		cmd = "vesktop";
 
 		autostartEnable = true;
 		autostartWorkspaceEnable = true;

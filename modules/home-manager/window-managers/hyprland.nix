@@ -71,6 +71,10 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 			enable = config.hyprland.enable;
 			package = inputs.hyprland.packages.${pkgs.system}.hyprland;
 			settings = {
+				general = {
+					gaps_in = 0;
+					gaps_out = 0;
+				};
 				env = [
 					''XCURSOR_THEME,macOS-BigSur-White''
 					''XCURSOR_SIZE,32''
@@ -194,7 +198,12 @@ wallpaper = DP-3,${hyprpaperWallpaperPath}
 					''SUPER, M, togglespecialworkspace, music''
 					''SUPER, M, exec, pidof ncmpcpp || foot -a MusicTerminal pkgs.ncmpcpp''
 					''SUPER SHIFT, M, movetoworkspace, special:music''
-	];
+				];
+
+				bindm = [
+					"SUPER, mouse:272, movewindow"
+					"SUPER, mouse:273, resizewindow"
+				];
 			};
 			systemd.enable = false;
 		};
