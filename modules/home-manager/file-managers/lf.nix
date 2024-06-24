@@ -1,13 +1,13 @@
-{ pkgs, ... }: {
-	
+{ pkgs, config, ... }: {
 	programs.lf = {
 
 		enable = true;
 
 		settings = {
+			sixel = true;
 			preview = true;
-			hidden = true;
 			drawbox = true;
+			hidden = true;
 			icons = true;
 			ignorecase = true;
 		};
@@ -29,4 +29,17 @@
 			'';
 		};
 	};
+
+	programs.lf = {
+		previewer = {
+			keybinding = "i";
+			source = "${pkgs.ctpv}/bin/ctpv";
+		};
+		extraConfig = ''
+			&${pkgs.ctpv}/bin/ctpv -s $id
+			cmd on-quit %${pkgs.ctpv}/bin/ctpv -e $id
+			set cleaner ${pkgs.ctpv}/bin/ctpvclear
+		'';
+	};
+	home.file.".config/ctpv/config".text = "set chafasixel";
 }

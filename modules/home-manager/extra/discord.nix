@@ -5,7 +5,7 @@ in
 	mkRule {
 		appPackage = pkgs.vesktop;
 		name = "Vesktop";
-		cmd = "vesktop";
+		cmd = "vesktop &";
 
 		autostartEnable = true;
 		autostartWorkspaceEnable = true;
@@ -21,6 +21,6 @@ in
 		workspaceKeybindKey = "d";
 		workspaceKeybindSuper = true;
 
-		appClass = "discord";
+		appClass = "vesktop";
 		appTitle = "Discord";
 	}

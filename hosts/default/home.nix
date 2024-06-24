@@ -7,6 +7,7 @@
 		../../modules/home-manager/terminals/foot.nix
 		../../modules/home-manager/widgets/ags.nix
 		../../modules/home-manager/window-managers/hyprland.nix
+		../../modules/home-manager/disk-managers/udiskie.nix
 		../../modules/home-manager/utilities/screenshot.nix
 		../../modules/home-manager/utilities/system-monitor.nix
 		../../modules/home-manager/utilities/zip.nix
@@ -31,6 +32,8 @@
 		../../modules/home-manager/development/nvim.nix
 		../../modules/home-manager/development/docker.nix
 		../../modules/home-manager/mail/thunderbird.nix
+		../../modules/home-manager/music/mpd.nix
+		../../modules/home-manager/music/ncmpcpp.nix
 	];
 
 	widgets.ags.enable = true;
@@ -40,7 +43,7 @@
 	hyprland.utilities.hyprpaper.enable = true;
 	hyprland.utilities.hyprpicker.enable = true;
 	hyprland.utilities.hyprcursor.enable = true;
-	hyprland.utilities.hyprpaper.wallpaper = ../../wallpapers/sotv_wallpaper.png;
+	hyprland.utilities.hyprpaper.wallpaper = ../../wallpapers/samus_wallpaper.png;
 	hyprland.utilities.hyprpaper.autostart = true;
 
 	xdg.mimeApps.defaultApplications = {
@@ -98,11 +101,17 @@
 		tlrc
 
 		jetbrains.idea-community
-		jdk8
+		jetbrains.jdk
+		javaPackages.openjfx21
+		scenebuilder
+
+
 		openssl
 
 		gamemode
 		gamescope
+
+		imagemagick
 		# # Adds the 'hello' command to your environment. It prints a friendly
 		# # "Hello, world!" when run.
 		# pkgs.hello

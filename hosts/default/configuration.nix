@@ -31,6 +31,7 @@
       vaapiVdpau # not sure if this is needed
       libvdpau-va-gl # also not sure if this is needed
       rocmPackages.clr.icd
+
 		];
 		extraPackages32 = with pkgs; [
 			driversi686Linux.amdvlk
@@ -84,7 +85,7 @@
   users.users.humberto = {
     isNormalUser = true;
     description = "Humberto Aleman";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
 
 		shell = pkgs.zsh;
   };
@@ -106,9 +107,29 @@
 		git
 		rustup
 		gcc
+
+		virt-manager
+		virt-viewer
+		spice spice-gtk
+		spice-protocol
+		win-virtio
+		win-spice
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+	virtualisation = {
+		libvirtd = {
+			enable = true;
+			qemu = {
+				swtpm.enable = true;
+				ovmf.enable = true;
+				ovmf.packages = [ pkgs.OVMFFull.fd ];
+			};
+		};
+		spiceUSBRedirection.enable = true;
+	};
+	services.spice-vdagentd.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
